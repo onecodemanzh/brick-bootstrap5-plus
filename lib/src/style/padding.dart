@@ -96,7 +96,7 @@ class _Padding extends _ResponsiveSpacing {
   }
 }
 
-class Padding extends _Padding{}
+class PaddingStyle extends _Padding{}
 class _ContentPadding implements _Spacing {
   @override
   final double? left;

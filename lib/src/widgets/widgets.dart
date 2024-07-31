@@ -7,7 +7,6 @@ import 'dart:ui' as ui show TextHeightBehavior;
 import 'package:collection/collection.dart';
 import 'package:intersperse/intersperse.dart';
 
-
 part 'layout/col.dart';
 part 'layout/order.dart';
 part 'layout/grid.dart';
