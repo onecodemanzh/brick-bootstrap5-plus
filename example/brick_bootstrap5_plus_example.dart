@@ -4,6 +4,7 @@ import 'package:brick_bootstrap5_plus/brick_bootstrap5_plus.dart';
 import 'package:flutter/material.dart';
 
 void main() {
+<<<<<<< HEAD
   runApp(
     MaterialApp(
       home: build(),
@@ -46,4 +47,8 @@ Widget build() {
       ),
     );
   });
+=======
+ 
+ 
+>>>>>>> 704a2f62e771a1627802e941ee2e17e8d7470150
 }

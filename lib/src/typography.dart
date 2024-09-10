@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+import 'package:brick_bootstrap5_plus/src/style/style.dart';
+>>>>>>> 704a2f62e771a1627802e941ee2e17e8d7470150
 import 'package:flutter/material.dart';
 
 import '../brick_bootstrap5_plus.dart';
