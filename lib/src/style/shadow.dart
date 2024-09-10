@@ -1,16 +1,17 @@
 part of brick_bootstrap5_plus_style;
 
-class _Border {
-  final double? defaultBorder;
-  final double? xs;
-  final double? sm;
-  final double? md;
-  final double? lg;
-  final double? xl;
-  final double? xxl;
+//阴影偏移量
+class _ShadowOffset {
+  final Offset? defaultOffset;
+  final Offset? xs;
+  final Offset? sm;
+  final Offset? md;
+  final Offset? lg;
+  final Offset? xl;
+  final Offset? xxl;
 
-  _Border({
-    this.defaultBorder,
+  _ShadowOffset({
+    this.defaultOffset,
     this.xs,
     this.sm,
     this.md,
@@ -19,17 +20,17 @@ class _Border {
     this.xxl,
   });
 
-  _Border _copyWith({
-    double? defaultBorder,
-    double? xs,
-    double? sm,
-    double? md,
-    double? lg,
-    double? xl,
-    double? xxl,
+  _ShadowOffset _copyWith({
+    Offset? defaultOffset,
+    Offset? xs,
+    Offset? sm,
+    Offset? md,
+    Offset? lg,
+    Offset? xl,
+    Offset? xxl,
   }) {
-    return _Border(
-      defaultBorder: defaultBorder ?? this.defaultBorder,
+    return _ShadowOffset(
+      defaultOffset: defaultOffset ?? this.defaultOffset,
       xs: xs ?? this.xs,
       sm: sm ?? this.sm,
       md: md ?? this.md,
@@ -39,72 +40,65 @@ class _Border {
     );
   }
 
-  _Border _copyWithClass(String className) {
+  _ShadowOffset _copyWithClass(String className) {
     final definitions = className.split("-");
 
     switch (definitions.length) {
-      /// border
-      case 1:
-        return _copyWithClass1(definitions);
-
-      /// border-1
-      case 2:
-        return _copyWithClass2(definitions);
-
-      /// border-xl-1
+      /// shadow-offset-10,20
       case 3:
         return _copyWithClass3(definitions);
+
+      /// shadow-offset-xs-10,20
+      case 4:
+        return _copyWithClass4(definitions);
+      default:
+        return this;
     }
-
-    return this;
   }
 
-  /// border
-  _Border _copyWithClass1(List<String> definitions) {
-    final double border = 1;
-    return _fromDefinitions(border: border);
+  /// shadow-offset-xs-10,20
+  _ShadowOffset _copyWithClass4(List<String> definitions) {
+    final dx = double.parse(definitions.last.split(",")[0]);
+    final dy = double.parse(definitions.last.split(",")[1]);
+    final breakPoint = definitions[2];
+    return _fromDefinitions(offset: Offset(dx, dy), breakPoint: breakPoint);
   }
 
-  /// border-1
-  _Border _copyWithClass2(List<String> definitions) {
-    final border = double.parse(definitions.last);
-    return _fromDefinitions(border: border);
+  /// shadow-offset-10,20
+  _ShadowOffset _copyWithClass3(List<String> definitions) {
+    final dx = double.parse(definitions.last.split(",")[0]);
+    final dy = double.parse(definitions.last.split(",")[1]);
+    return _fromDefinitions(offset: Offset(dx, dy));
   }
 
-  /// border-xl-1
-  _Border _copyWithClass3(List<String> definitions) {
-    final border = double.parse(definitions.last);
-    final breakPoint = definitions[1];
-    return _fromDefinitions(border: border, breakPoint: breakPoint);
-  }
-
-  _Border _fromDefinitions({
-    double? border,
+  _ShadowOffset _fromDefinitions({
+    Offset? offset,
     String? breakPoint,
   }) {
-    if (border == null) return this;
+    if (offset == null) return this;
 
     switch (breakPoint) {
       case 'xs':
-        return _copyWith(xs: border);
+        return _copyWith(xs: offset);
       case 'sm':
-        return _copyWith(sm: border);
+        return _copyWith(sm: offset);
       case 'md':
-        return _copyWith(md: border);
+        return _copyWith(md: offset);
       case 'lg':
-        return _copyWith(lg: border);
+        return _copyWith(lg: offset);
       case 'xl':
-        return _copyWith(xl: border);
+        return _copyWith(xl: offset);
       case 'xxl':
-        return _copyWith(xxl: border);
+        return _copyWith(xxl: offset);
       default:
-        return _copyWith(defaultBorder: border);
+        return _copyWith(defaultOffset: offset);
     }
   }
 }
 
-class _BorderRadius {
-  final double? defaultBorderRadius;
+//阴影模糊半径
+class _ShadowBlurRadius {
+  final double? defaultBlurRadius;
   final double? xs;
   final double? sm;
   final double? md;
@@ -112,8 +106,8 @@ class _BorderRadius {
   final double? xl;
   final double? xxl;
 
-  _BorderRadius({
-    this.defaultBorderRadius,
+  _ShadowBlurRadius({
+    this.defaultBlurRadius,
     this.xs,
     this.sm,
     this.md,
@@ -122,8 +116,8 @@ class _BorderRadius {
     this.xxl,
   });
 
-  _BorderRadius _copyWith({
-    double? defaultBorderRadius,
+  _ShadowBlurRadius _copyWith({
+    double? defaultBlurRadius,
     double? xs,
     double? sm,
     double? md,
@@ -131,8 +125,8 @@ class _BorderRadius {
     double? xl,
     double? xxl,
   }) {
-    return _BorderRadius(
-      defaultBorderRadius: defaultBorderRadius ?? this.defaultBorderRadius,
+    return _ShadowBlurRadius(
+      defaultBlurRadius: defaultBlurRadius ?? this.defaultBlurRadius,
       xs: xs ?? this.xs,
       sm: sm ?? this.sm,
       md: md ?? this.md,
@@ -142,15 +136,15 @@ class _BorderRadius {
     );
   }
 
-  _BorderRadius _copyWithClass(String className) {
+  _ShadowBlurRadius _copyWithClass(String className) {
     final definitions = className.split("-");
 
     switch (definitions.length) {
-      /// border-radius-1
+      /// shadow-blurRadius-1
       case 3:
         return _copyWithClass3(definitions);
 
-      /// border-radius--xl-1
+      /// shadow-blurRadius-xl-1
       case 4:
         return _copyWithClass4(definitions);
     }
@@ -158,46 +152,48 @@ class _BorderRadius {
     return this;
   }
 
-  /// border-radius-1
-  _BorderRadius _copyWithClass3(List<String> definitions) {
-    final borderRadius = double.parse(definitions.last);
-    return _fromDefinitions(borderRadius: borderRadius);
+  /// shadow-blurRadius-1
+  _ShadowBlurRadius _copyWithClass3(List<String> definitions) {
+    final shadowBlurRadius = double.parse(definitions.last);
+    return _fromDefinitions(shadowBlurRadius: shadowBlurRadius);
   }
 
-  /// border-radius-xl-1
-  _BorderRadius _copyWithClass4(List<String> definitions) {
-    final borderRadius = double.parse(definitions.last);
+  /// shadow-blurRadius-xl-1
+  _ShadowBlurRadius _copyWithClass4(List<String> definitions) {
+    final shadowBlurRadius = double.parse(definitions.last);
     final breakPoint = definitions[2];
-    return _fromDefinitions(borderRadius: borderRadius, breakPoint: breakPoint);
+    return _fromDefinitions(
+        shadowBlurRadius: shadowBlurRadius, breakPoint: breakPoint);
   }
 
-  _BorderRadius _fromDefinitions({
-    double? borderRadius,
+  _ShadowBlurRadius _fromDefinitions({
+    double? shadowBlurRadius,
     String? breakPoint,
   }) {
-    if (borderRadius == null) return this;
+    if (shadowBlurRadius == null) return this;
 
     switch (breakPoint) {
       case 'xs':
-        return _copyWith(xs: borderRadius);
+        return _copyWith(xs: shadowBlurRadius);
       case 'sm':
-        return _copyWith(sm: borderRadius);
+        return _copyWith(sm: shadowBlurRadius);
       case 'md':
-        return _copyWith(md: borderRadius);
+        return _copyWith(md: shadowBlurRadius);
       case 'lg':
-        return _copyWith(lg: borderRadius);
+        return _copyWith(lg: shadowBlurRadius);
       case 'xl':
-        return _copyWith(xl: borderRadius);
+        return _copyWith(xl: shadowBlurRadius);
       case 'xxl':
-        return _copyWith(xxl: borderRadius);
+        return _copyWith(xxl: shadowBlurRadius);
       default:
-        return _copyWith(defaultBorderRadius: borderRadius);
+        return _copyWith(defaultBlurRadius: shadowBlurRadius);
     }
   }
 }
 
-class _BorderColor {
-  final Color? defaultBorderColor;
+//阴影颜色
+class _ShadowColor {
+  final Color? defaultShadowColor;
   final Color? xs;
   final Color? sm;
   final Color? md;
@@ -205,8 +201,8 @@ class _BorderColor {
   final Color? xl;
   final Color? xxl;
 
-  _BorderColor({
-    this.defaultBorderColor,
+  _ShadowColor({
+    this.defaultShadowColor,
     this.xs,
     this.sm,
     this.md,
@@ -215,8 +211,8 @@ class _BorderColor {
     this.xxl,
   });
 
-  _BorderColor _copyWith({
-    Color? defaultBorderColor,
+  _ShadowColor _copyWith({
+    Color? defaultShadowColor,
     Color? xs,
     Color? sm,
     Color? md,
@@ -224,8 +220,8 @@ class _BorderColor {
     Color? xl,
     Color? xxl,
   }) {
-    return _BorderColor(
-      defaultBorderColor: defaultBorderColor ?? this.defaultBorderColor,
+    return _ShadowColor(
+      defaultShadowColor: defaultShadowColor ?? this.defaultShadowColor,
       xs: xs ?? this.xs,
       sm: sm ?? this.sm,
       md: md ?? this.md,
@@ -235,27 +231,27 @@ class _BorderColor {
     );
   }
 
-  _BorderColor _copyWithClass(String className) {
+  _ShadowColor _copyWithClass(String className) {
     final definitions = className.split("-");
 
     switch (definitions.length) {
-      /// border-color-red
+      /// shadow-color-red
       case 2:
         return _copyWithClass3(definitions);
 
-      /// border-color-xl-red
+      /// shadow-color-xl-red
       case 3:
         return _copyWithClass4(definitions);
 
-      /// border-color-r-g-b
+      /// shadow-color-r-g-b
       case 4:
         return _copyWithClass5(definitions);
 
-      /// border-color-xl-r-g-b   border-color-r-g-b-a
+      /// shadow-color-xl-r-g-b   shadow-color-r-g-b-a
       case 5:
         return _copyWithClass6(definitions);
 
-      /// border-color-xl-r-g-b-a
+      /// shadow-color-xl-r-g-b-a
       case 6:
         return _copyWithClass7(definitions);
     }
@@ -263,31 +259,31 @@ class _BorderColor {
     return this;
   }
 
-  /// border-color-red
-  _BorderColor _copyWithClass3(List<String> definitions) {
-    final borderColor = definitions.last;
-    return _fromDefinitions(borderColor: borderColor);
+  /// shadow-color-red
+  _ShadowColor _copyWithClass3(List<String> definitions) {
+    final shadowColor = definitions.last;
+    return _fromDefinitions(shadowColor: shadowColor);
   }
 
-  /// border-color-xl-red
-  _BorderColor _copyWithClass4(List<String> definitions) {
-    final borderColor = definitions.last;
+  /// shadow-color-xl-red
+  _ShadowColor _copyWithClass4(List<String> definitions) {
+    final shadowColor = definitions.last;
     final breakPoint = definitions[1];
-    return _fromDefinitions(borderColor: borderColor, breakPoint: breakPoint);
+    return _fromDefinitions(shadowColor: shadowColor, breakPoint: breakPoint);
   }
 
-  /// border-color-r-g-b
-  _BorderColor _copyWithClass5(List<String> definitions) {
-    final borderColor = definitions.last;
+  /// shadow-color-r-g-b
+  _ShadowColor _copyWithClass5(List<String> definitions) {
+    final shadowColor = definitions.last;
     final r = int.parse(definitions[1]);
     final g = int.parse(definitions[2]);
     final b = int.parse(definitions[3]);
-    return _fromDefinitions(borderColor: borderColor, r: r, g: g, b: b);
+    return _fromDefinitions(shadowColor: shadowColor, r: r, g: g, b: b);
   }
 
-  /// border-color-xl-r-g-b   border-color-r-g-b-a
-  _BorderColor _copyWithClass6(List<String> definitions) {
-    final borderColor = definitions.last;
+  /// shadow-color-xl-r-g-b   shadow-color-r-g-b-a
+  _ShadowColor _copyWithClass6(List<String> definitions) {
+    final shadowColor = definitions.last;
     final breakPoint = definitions[1];
     var hasBreakPoint = breakPoints.contains(breakPoint);
     if (hasBreakPoint) {
@@ -295,14 +291,14 @@ class _BorderColor {
       final g = int.parse(definitions[3]);
       final b = int.parse(definitions[4]);
       return _fromDefinitions(
-          borderColor: borderColor, breakPoint: breakPoint, r: r, g: g, b: b);
+          shadowColor: shadowColor, breakPoint: breakPoint, r: r, g: g, b: b);
     }
     final r = int.parse(definitions[1]);
     final g = int.parse(definitions[2]);
     final b = int.parse(definitions[3]);
     final a = double.parse(definitions[4]);
     return _fromDefinitions(
-        borderColor: borderColor,
+        shadowColor: shadowColor,
         breakPoint: breakPoint,
         r: r,
         g: g,
@@ -310,16 +306,16 @@ class _BorderColor {
         a: a);
   }
 
-  /// border-color-xl-r-g-b-a
-  _BorderColor _copyWithClass7(List<String> definitions) {
-    final borderColor = definitions.last;
+  /// shadow-color-xl-r-g-b-a
+  _ShadowColor _copyWithClass7(List<String> definitions) {
+    final shadowColor = definitions.last;
     final breakPoint = definitions[1];
     final r = int.parse(definitions[2]);
     final g = int.parse(definitions[3]);
     final b = int.parse(definitions[4]);
     final a = double.parse(definitions[5]);
     return _fromDefinitions(
-        borderColor: borderColor,
+        shadowColor: shadowColor,
         breakPoint: breakPoint,
         r: r,
         g: g,
@@ -327,8 +323,8 @@ class _BorderColor {
         a: a);
   }
 
-  _BorderColor _fromDefinitions({
-    required String borderColor,
+  _ShadowColor _fromDefinitions({
+    required String shadowColor,
     String? breakPoint,
     int? r,
     int? g,
@@ -337,7 +333,7 @@ class _BorderColor {
   }) {
     Color? color;
 
-    switch (borderColor) {
+    switch (shadowColor) {
       case 'transparent':
         color = Colors.transparent;
         break;
@@ -496,8 +492,8 @@ class _BorderColor {
           color = Color.fromRGBO(r, g, b, a ?? 1);
         } else {
           /// #fff #ffffff
-          if (borderColor.length == 3 || borderColor.length == 6) {
-            color = TinyColor.fromString('0xFF$borderColor').toColor();
+          if (shadowColor.length == 3 || shadowColor.length == 6) {
+            color = TinyColor.fromString('0xFF$shadowColor').toColor();
           }
         }
         break;
@@ -517,7 +513,7 @@ class _BorderColor {
       case 'xxl':
         return _copyWith(xxl: color);
       default:
-        return _copyWith(defaultBorderColor: color);
+        return _copyWith(defaultShadowColor: color);
     }
   }
 }

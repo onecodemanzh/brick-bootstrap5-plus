@@ -1,9 +1,13 @@
 library brick_bootstrap5_plus_style;
 
+// 因为暂时只用到这个
+import 'dart:ui' show ImageFilter;
+
 import 'package:flutter/material.dart';
 import 'package:tinycolor2/tinycolor2.dart';
 
 import '../layout/layout.dart';
+import '../utilities/utilities.dart';
 
 part 'breakpoints.dart';
 part 'vertical_alignment.dart';
@@ -25,6 +29,12 @@ part 'height.dart';
 part 'border.dart';
 part 'font_weight.dart';
 part 'font_size.dart';
+// part 'opacity.dart';
+part 'fit.dart';
+part 'stack_fit.dart';
+part 'blur.dart';
+part 'scale.dart';
+part 'shadow.dart';
 
 abstract class _Sizing {
   double get numerator;
@@ -82,7 +92,8 @@ abstract class _ResponsiveSpacing {
     return this;
   }
 
-  _ResponsiveSpacing copyWithClass (String className) => _copyWithClass(className);
+  _ResponsiveSpacing copyWithClass(String className) =>
+      _copyWithClass(className);
 
   /// e.g. 'm-3'
   _ResponsiveSpacing _copyWithClass2(List<String> definitions) {
@@ -91,7 +102,7 @@ abstract class _ResponsiveSpacing {
     return _fromDefinitions(type: type, size: _sizeFromNumerator(numerator));
   }
 
-  /// e.g. 'm-lg-3' || 'm-custom-2.5'
+  /// e.g. 'm-lg-3' || 'm-custom-2.5 120'
   _ResponsiveSpacing _copyWithClass3(List<String> definitions) {
     final type = definitions.first;
     final breakPoint = definitions[1];
@@ -125,7 +136,7 @@ abstract class _ResponsiveSpacing {
 StyleAbbrSet getStyle(
   ScreenData screenData,
   BoxConstraints constraints,
-  _Style? styles,
+  Style? styles,
 ) {
   final display = styles?.display;
   final gutter = styles?.gutter;
@@ -147,9 +158,27 @@ StyleAbbrSet getStyle(
   final width1 = styles?.width;
   final height1 = styles?.height;
 
+  final _maxWidth = styles?.maxWidth;
+  final _maxHeight = styles?.maxHeight;
+  final _minWidth = styles?.minWidth;
+  final _minHeight = styles?.minHeight;
+
   final border = styles?.border;
   final borderColor = styles?.borderColor;
+  final hoverColor = styles?.hoverColor;
+  final _hoverBorder = styles?.hoverBorder;
+  final _hoverBorderColor = styles?.hoverBorderColor;
+
+  final activeColor = styles?.activeColor;
   final borderRadius = styles?.borderRadius;
+  final fit = styles?.fit;
+  final stackFit = styles?.stackFit;
+  final blur = styles?.blur;
+  final scale = styles?.scale;
+  final shadowColor = styles?.shadowColor;
+  final shadowBlurRadius = styles?.shadowBlurRadius;
+
+  final shadowOffset = styles?.shadowOffset;
 
   final isVisible = screenData.breakPoints._currentDisplay(
     screenData.currentBreakPoint,
@@ -229,6 +258,18 @@ StyleAbbrSet getStyle(
     xl: offset?.xl,
     xxl: offset?.xxl,
   );
+
+  // //透明度
+  // final _opacity = screenData.breakPoints._currentopacity(
+  //   screenData.currentBreakPoint,
+  //   fromStyle: opacity?.defaultOpacity,
+  //   xs: opacity?.xs,
+  //   sm: opacity?.sm,
+  //   md: opacity?.md,
+  //   lg: opacity?.lg,
+  //   xl: opacity?.xl,
+  //   xxl: opacity?.xxl,
+  // );
 
   final cp = screenData.breakPoints._currentPadding(
     1, //screenData.fontSize,
@@ -317,7 +358,7 @@ StyleAbbrSet getStyle(
   );
 
   /// 百分比 或 px 规定宽度
-  final _width1 = screenData.breakPoints._currentWidth1(
+  final width10 = screenData.breakPoints._currentWidth1(
     constraints.maxWidth,
     screenData.currentBreakPoint,
     fromStyle: width1?.defaultWidth,
@@ -331,8 +372,8 @@ StyleAbbrSet getStyle(
   );
 
   /// 百分比 或 px 规定高度
-  final _height1 = screenData.breakPoints._currentWidth1(
-    constraints.maxWidth,
+  final height10 = screenData.breakPoints._currentWidth1(
+    constraints.maxHeight,
     screenData.currentBreakPoint,
     fromStyle: height1?.defaultHeight,
     xs: height1?.xs,
@@ -345,7 +386,7 @@ StyleAbbrSet getStyle(
   );
 
   /// 边框 宽度 px
-  final _border = screenData.breakPoints._currentWidth1(
+  final border0 = screenData.breakPoints._currentWidth1(
     constraints.maxWidth,
     screenData.currentBreakPoint,
     fromStyle: border?.defaultBorder,
@@ -358,8 +399,114 @@ StyleAbbrSet getStyle(
     unit: 'px',
   );
 
+  /// hover 边框 宽度 px
+  final hoverBorder = screenData.breakPoints._currentWidth1(
+    constraints.maxWidth,
+    screenData.currentBreakPoint,
+    fromStyle: _hoverBorder?.defaultBorder,
+    xs: _hoverBorder?.xs,
+    sm: _hoverBorder?.sm,
+    md: _hoverBorder?.md,
+    lg: _hoverBorder?.lg,
+    xl: _hoverBorder?.xl,
+    xxl: _hoverBorder?.xxl,
+    unit: 'px',
+  );
+
+  /// 百分比 或 px 规定高度
+  final maxWidth = screenData.breakPoints._currentWidth1(
+    constraints.maxWidth,
+    screenData.currentBreakPoint,
+    fromStyle: _maxWidth?.defaultWidth,
+    xs: _maxWidth?.xs,
+    sm: _maxWidth?.sm,
+    md: _maxWidth?.md,
+    lg: _maxWidth?.lg,
+    xl: _maxWidth?.xl,
+    xxl: _maxWidth?.xxl,
+    unit: _maxWidth?.unit,
+  );
+
+  /// 百分比 或 px 规定高度
+  final minHeight = screenData.breakPoints._currentWidth1(
+    constraints.maxHeight,
+    screenData.currentBreakPoint,
+    fromStyle: _minHeight?.defaultHeight,
+    xs: _minHeight?.xs,
+    sm: _minHeight?.sm,
+    md: _minHeight?.md,
+    lg: _minHeight?.lg,
+    xl: _minHeight?.xl,
+    xxl: _minHeight?.xxl,
+    unit: _minHeight?.unit,
+  );
+
+  /// 百分比 或 px 规定高度
+  final minWidth = screenData.breakPoints._currentWidth1(
+    constraints.maxWidth,
+    screenData.currentBreakPoint,
+    fromStyle: _minWidth?.defaultWidth,
+    xs: _minWidth?.xs,
+    sm: _minWidth?.sm,
+    md: _minWidth?.md,
+    lg: _minWidth?.lg,
+    xl: _minWidth?.xl,
+    xxl: _minWidth?.xxl,
+    unit: _minWidth?.unit,
+  );
+
+  /// 百分比 或 px 规定高度
+  final maxHeight = screenData.breakPoints._currentWidth1(
+    constraints.maxHeight,
+    screenData.currentBreakPoint,
+    fromStyle: _maxHeight?.defaultHeight,
+    xs: _maxHeight?.xs,
+    sm: _maxHeight?.sm,
+    md: _maxHeight?.md,
+    lg: _maxHeight?.lg,
+    xl: _maxHeight?.xl,
+    xxl: _maxHeight?.xxl,
+    unit: _maxHeight?.unit,
+  );
+
+  /// 鼠标覆盖组件时的边框颜色
+  final hoverBorderColor = screenData.breakPoints._currentColor(
+    screenData.currentBreakPoint,
+    fromStyle: _hoverBorderColor?.defaultColor,
+    xs: _hoverBorderColor?.xs,
+    sm: _hoverBorderColor?.sm,
+    md: _hoverBorderColor?.md,
+    lg: _hoverBorderColor?.lg,
+    xl: _hoverBorderColor?.xl,
+    xxl: _hoverBorderColor?.xxl,
+  );
+
+  /// 鼠标覆盖组件时的颜色
+  final hoverColor0 = screenData.breakPoints._currentColor(
+    screenData.currentBreakPoint,
+    fromStyle: hoverColor?.defaultColor,
+    xs: hoverColor?.xs,
+    sm: hoverColor?.sm,
+    md: hoverColor?.md,
+    lg: hoverColor?.lg,
+    xl: hoverColor?.xl,
+    xxl: hoverColor?.xxl,
+  );
+
+  /// 激活或选中颜色
+  final activeColor0 = screenData.breakPoints._currentColor(
+    screenData.currentBreakPoint,
+    fromStyle: activeColor?.defaultColor,
+    xs: activeColor?.xs,
+    sm: activeColor?.sm,
+    md: activeColor?.md,
+    lg: activeColor?.lg,
+    xl: activeColor?.xl,
+    xxl: activeColor?.xxl,
+  );
+
   /// 边框颜色
-  final _borderColor = screenData.breakPoints._currentColor(
+  final borderColor0 = screenData.breakPoints._currentColor(
     screenData.currentBreakPoint,
     fromStyle: borderColor?.defaultBorderColor,
     xs: borderColor?.xs,
@@ -371,7 +518,7 @@ StyleAbbrSet getStyle(
   );
 
   /// 边框圆角
-  final _borderRadius = screenData.breakPoints._currentWidth1(
+  final borderRadius0 = screenData.breakPoints._currentWidth1(
     constraints.maxWidth,
     screenData.currentBreakPoint,
     fromStyle: borderRadius?.defaultBorderRadius,
@@ -383,6 +530,89 @@ StyleAbbrSet getStyle(
     xxl: borderRadius?.xxl,
     unit: 'px',
   );
+
+  /// 填充
+  final fit0 = screenData.breakPoints._currentFit(
+    screenData.currentBreakPoint,
+    fromStyle: fit?.defaultFit,
+    xs: fit?.xs,
+    sm: fit?.sm,
+    md: fit?.md,
+    lg: fit?.lg,
+    xl: fit?.xl,
+    xxl: fit?.xxl,
+  );
+
+  /// 填充
+  final stackFit0 = screenData.breakPoints._currentStackFit(
+    screenData.currentBreakPoint,
+    fromStyle: stackFit?.defaultFit,
+    xs: stackFit?.xs,
+    sm: stackFit?.sm,
+    md: stackFit?.md,
+    lg: stackFit?.lg,
+    xl: stackFit?.xl,
+    xxl: stackFit?.xxl,
+  );
+
+  /// 模糊
+  final blur0 = screenData.breakPoints._currentBlur(
+    screenData.currentBreakPoint,
+    fromStyle: blur?.defaultBlur,
+    xs: blur?.xs,
+    sm: blur?.sm,
+    md: blur?.md,
+    lg: blur?.lg,
+    xl: blur?.xl,
+    xxl: blur?.xxl,
+  );
+
+  final scale0 = screenData.breakPoints._currentScale(
+    screenData.currentBreakPoint,
+    fromStyle: scale?.defaultScale,
+    xs: scale?.xs,
+    sm: scale?.sm,
+    md: scale?.md,
+    lg: scale?.lg,
+    xl: scale?.xl,
+    xxl: scale?.xxl,
+  );
+
+  final shadowColor0 = screenData.breakPoints._currentColor(
+    screenData.currentBreakPoint,
+    fromStyle: shadowColor?.defaultShadowColor,
+    xs: shadowColor?.xs,
+    sm: shadowColor?.sm,
+    md: shadowColor?.md,
+    lg: shadowColor?.lg,
+    xl: borderColor?.xl,
+    xxl: shadowColor?.xxl,
+  );
+
+  final shadowBlurRadius0 = screenData.breakPoints._currentShadowBlurRadius(
+    screenData.currentBreakPoint,
+    fromStyle: shadowBlurRadius?.defaultBlurRadius,
+    xs: shadowBlurRadius?.xs,
+    sm: shadowBlurRadius?.sm,
+    md: shadowBlurRadius?.md,
+    lg: shadowBlurRadius?.lg,
+    xl: shadowBlurRadius?.xl,
+    xxl: shadowBlurRadius?.xxl,
+  );
+
+  // final shadowOffset = styles?.shadowOffset;
+
+  final shadowOffset0 = screenData.breakPoints._shadowOffset(
+    screenData.currentBreakPoint,
+    fromStyle: shadowOffset?.defaultOffset,
+    xs: shadowOffset?.xs,
+    sm: shadowOffset?.sm,
+    md: shadowOffset?.md,
+    lg: shadowOffset?.lg,
+    xl: shadowOffset?.xl,
+    xxl: shadowOffset?.xxl,
+  );
+
   return StyleAbbrSet(
     cg: cg,
     cp: cp,
@@ -399,11 +629,27 @@ StyleAbbrSet getStyle(
     fs: fs,
     color: color,
     bg: bgColor,
-    w: _width1,
-    h: _height1,
-    border: _border,
-    borderColor: _borderColor,
-    borderRadius: _borderRadius,
+    w: width10,
+    h: height10,
+    minHeight: minHeight,
+    minWidth: minWidth,
+    maxHeight: maxHeight,
+    maxWidth: maxWidth,
+    border: border0,
+    // opacity: _opacity,
+    borderColor: borderColor0,
+    hoverColor: hoverColor0,
+    hoverBorder: hoverBorder,
+    hoverBorderColor: hoverBorderColor,
+    activeColor: activeColor0,
+    borderRadius: borderRadius0,
+    fit: fit0,
+    stackFit: stackFit0,
+    blur: blur0,
+    scale: scale0,
+    shadowColor: shadowColor0,
+    shadowBlurRadius: shadowBlurRadius0,
+    shadowOffset: shadowOffset0,
   );
 }
 
@@ -431,6 +677,14 @@ StyleAbbrSet getStyle(
 ///
 /// isVisible [bool]? 是否可见
 ///
+
+/// fit [BoxFit]? 填充
+///
+/// stackFit [StackFit]? 填充
+///
+/// blur [ImageFilter]? 模糊
+///
+/// scale [double]? 缩放
 ///
 class StyleAbbrSet {
   /// gutter
@@ -478,6 +732,18 @@ class StyleAbbrSet {
   /// 背景色
   Color? bg;
 
+  /// 最小宽度 百分比或px
+  double? minWidth;
+
+  /// 最小 高度 百分比或px
+  double? minHeight;
+
+  /// 最大宽度 百分比或px
+  double? maxWidth;
+
+  /// 最大高度 百分比或px
+  double? maxHeight;
+
   /// 宽度 百分比或px
   double? w;
 
@@ -490,8 +756,41 @@ class StyleAbbrSet {
   /// 边框颜色
   Color? borderColor;
 
+  /// hover 边框宽度 px
+  double? hoverBorder;
+
+  /// hover 边框颜色
+  Color? hoverBorderColor;
+
+  /// 鼠标移上去时的颜色
+  Color? hoverColor;
+
+  /// 激活或选中颜色
+  Color? activeColor;
+
   /// 边框圆角 px
   double? borderRadius;
+
+  /// 填充
+  BoxFit? fit;
+
+  /// 填充
+  StackFit? stackFit;
+
+  /// 模糊
+  ImageFilter? blur;
+
+  /// 缩放
+  Transform? scale;
+
+  //阴影颜色
+  Color? shadowColor;
+
+  //阴影模糊半径
+  double? shadowBlurRadius;
+
+  //阴影偏移量
+  Offset? shadowOffset;
 
   StyleAbbrSet({
     this.cg,
@@ -509,10 +808,25 @@ class StyleAbbrSet {
     this.fs,
     this.color,
     this.bg,
+    this.minWidth,
+    this.minHeight,
+    this.maxWidth,
+    this.maxHeight,
     this.w,
     this.h,
     this.border,
     this.borderColor,
+    this.hoverColor,
+    this.hoverBorder,
+    this.hoverBorderColor,
+    this.activeColor,
     this.borderRadius,
+    this.fit,
+    this.stackFit,
+    this.blur,
+    this.scale,
+    this.shadowColor,
+    this.shadowBlurRadius,
+    this.shadowOffset,
   });
 }

@@ -143,6 +143,25 @@ class BreakPoints {
           xl: xl,
           xxl: xxl);
 
+  // double? _currentopacity(
+  //   BreakPoint breakPoint, {
+  //   double? fromStyle,
+  //   double? xs,
+  //   double? sm,
+  //   double? md,
+  //   double? lg,
+  //   double? xl,
+  //   double? xxl,
+  // }) =>
+  //     _currentopacity(breakPoint,
+  //         fromStyle: fromStyle,
+  //         xs: xs,
+  //         sm: sm,
+  //         md: md,
+  //         lg: lg,
+  //         xl: xl,
+  //         xxl: xxl);
+
   EdgeInsets? _currentSpacing(
     double spacer,
     BreakPoint breakPoint, {
@@ -864,6 +883,222 @@ class BreakPoints {
       default:
         return null;
     }
+  }
+
+  BoxFit? _currentFit(
+    BreakPoint breakPoint, {
+    BoxFit? fromStyle,
+    BoxFit? xs,
+    BoxFit? sm,
+    BoxFit? md,
+    BoxFit? lg,
+    BoxFit? xl,
+    BoxFit? xxl,
+  }) {
+    BoxFit? f;
+    if (fromStyle != null) {
+      f = fromStyle;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.xs) && xs != null) {
+      f = xs;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.sm) && sm != null) {
+      f = sm;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.md) && md != null) {
+      f = md;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.lg) && lg != null) {
+      f = lg;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.xl) && xl != null) {
+      f = xl;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.xxl) && xxl != null) {
+      f = xxl;
+    }
+
+    return f;
+  }
+
+  StackFit? _currentStackFit(
+    BreakPoint breakPoint, {
+    StackFit? fromStyle,
+    StackFit? xs,
+    StackFit? sm,
+    StackFit? md,
+    StackFit? lg,
+    StackFit? xl,
+    StackFit? xxl,
+  }) {
+    StackFit? f;
+    if (fromStyle != null) {
+      f = fromStyle;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.xs) && xs != null) {
+      f = xs;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.sm) && sm != null) {
+      f = sm;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.md) && md != null) {
+      f = md;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.lg) && lg != null) {
+      f = lg;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.xl) && xl != null) {
+      f = xl;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.xxl) && xxl != null) {
+      f = xxl;
+    }
+
+    return f;
+  }
+
+  ImageFilter? _currentBlur(
+    BreakPoint breakPoint, {
+    ImageFilter? fromStyle,
+    ImageFilter? xs,
+    ImageFilter? sm,
+    ImageFilter? md,
+    ImageFilter? lg,
+    ImageFilter? xl,
+    ImageFilter? xxl,
+  }) {
+    ImageFilter? f;
+    if (fromStyle != null) {
+      f = fromStyle;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.xs) && xs != null) {
+      f = xs;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.sm) && sm != null) {
+      f = sm;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.md) && md != null) {
+      f = md;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.lg) && lg != null) {
+      f = lg;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.xl) && xl != null) {
+      f = xl;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.xxl) && xxl != null) {
+      f = xxl;
+    }
+
+    return f;
+  }
+
+  Transform? _currentScale(
+    BreakPoint breakPoint, {
+    Transform? fromStyle,
+    Transform? xs,
+    Transform? sm,
+    Transform? md,
+    Transform? lg,
+    Transform? xl,
+    Transform? xxl,
+  }) {
+    Transform? s;
+    if (fromStyle != null) {
+      s = fromStyle;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.xs) && xs != null) {
+      s = xs;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.sm) && sm != null) {
+      s = sm;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.md) && md != null) {
+      s = md;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.lg) && lg != null) {
+      s = lg;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.xl) && xl != null) {
+      s = xl;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.xxl) && xxl != null) {
+      s = xxl;
+    }
+
+    return s;
+  }
+
+  double? _currentShadowBlurRadius(
+    BreakPoint breakPoint, {
+    double? fromStyle,
+    double? xs,
+    double? sm,
+    double? md,
+    double? lg,
+    double? xl,
+    double? xxl,
+  }) {
+    double? s;
+    if (fromStyle != null) {
+      s = fromStyle;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.xs) && xs != null) {
+      s = xs;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.sm) && sm != null) {
+      s = sm;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.md) && md != null) {
+      s = md;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.lg) && lg != null) {
+      s = lg;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.xl) && xl != null) {
+      s = xl;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.xxl) && xxl != null) {
+      s = xxl;
+    }
+
+    return s;
+  }
+
+  Offset? _shadowOffset(
+    BreakPoint breakPoint, {
+    Offset? fromStyle,
+    Offset? xs,
+    Offset? sm,
+    Offset? md,
+    Offset? lg,
+    Offset? xl,
+    Offset? xxl,
+  }) {
+    Offset? o;
+    if (fromStyle != null) {
+      o = fromStyle;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.xs) && xs != null) {
+      o = xs;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.sm) && sm != null) {
+      o = sm;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.md) && md != null) {
+      o = md;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.lg) && lg != null) {
+      o = lg;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.xl) && xl != null) {
+      o = xl;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.xxl) && xxl != null) {
+      o = xxl;
+    }
+
+    return o;
   }
 
   List<BreakPoint> get _values => [xs, sm, md, lg, xl, xxl];

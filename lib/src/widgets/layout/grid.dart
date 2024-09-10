@@ -17,7 +17,7 @@ class Grid extends StatelessWidget {
   }) {
     final style = convertClassNamesToStyle(classNames);
     return Grid._(
-      style: style as Style,
+      style: style,
       sortChildren: sortChildren,
       children: children,
     );
@@ -31,7 +31,7 @@ class Grid extends StatelessWidget {
   }) {
     final style = convertClassNamesToStyle(classNames);
     return Grid._(
-      style: style as Style,
+      style: style,
       intrinsicHeight: false,
       maxChildExpand: maxChildExpand,
       sortChildren: sortChildren,
@@ -130,8 +130,10 @@ class Grid extends StatelessWidget {
                           (constraints.maxWidth - (hp * (rc - 1))) / rc;
 
                       final child = Row(
-                        mainAxisAlignment: _convertAlignment(ha) ?? MainAxisAlignment.start,
-                        crossAxisAlignment: _convertCrossAlignment(va) ?? CrossAxisAlignment.stretch,
+                        mainAxisAlignment:
+                            _convertAlignment(ha) ?? MainAxisAlignment.start,
+                        crossAxisAlignment: _convertCrossAlignment(va) ??
+                            CrossAxisAlignment.stretch,
                         children: [
                           ...slice
                               .map<Widget>(

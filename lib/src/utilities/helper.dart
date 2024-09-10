@@ -76,3 +76,30 @@ bool isAllZero_EdgeInsets(EdgeInsets? edgeInsets) {
       edgeInsets.right == 0 &&
       edgeInsets.bottom == 0;
 }
+
+class LabelValue {
+  /// 要 显示 的 文字
+  String label;
+
+  /// 要 绑定 的 值
+  dynamic value;
+
+  /// 要 显示 的 组件
+  Widget? labelWidget;
+
+  LabelValue({
+    required this.label,
+    this.value,
+    this.labelWidget,
+  });
+
+  /// 内部的字段 Map，用于实现动态访问
+  late final Map<String, dynamic> _fields = {
+    'label': label,
+    'value': value,
+    'labelWidget': labelWidget,
+  };
+
+  /// 通过字段名访问对应的值
+  dynamic operator [](String field) => _fields[field];
+}

@@ -26,12 +26,13 @@
 - border-radius-    border-radius
 - border-   border
 
+- fit-   fit-`BoxFit` fit-`xs`-`BoxFit`
+- stack-fit-   stack-fit-`StackFit`  stack-fit-`xs`-`StackFit`
+- opacity      opacity-
+- blur-   blur-`sigmaX`-`sigmaY`  blur-`xs`-`sigmaX`-`sigmaY`
+- scale   scale-   scale-`xl`-
+
 - shadow-   shadow
-- blur-   blur
-- fit-   fit
-- stack-fit-   blur
-- opacity
-- scale
 
 
 

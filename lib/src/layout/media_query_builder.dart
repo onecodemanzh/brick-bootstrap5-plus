@@ -1,4 +1,3 @@
-
 part of brick_bootstrap5_plus_layout;
 
 typedef MediaQueryBuilderFunction = Widget Function(

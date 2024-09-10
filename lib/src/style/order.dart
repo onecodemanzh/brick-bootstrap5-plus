@@ -1,4 +1,5 @@
 part of brick_bootstrap5_plus_style;
+
 class _Order {
   final _OrderNumber? defaultOrder;
   final _OrderNumber? xs;

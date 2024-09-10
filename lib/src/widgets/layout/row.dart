@@ -13,7 +13,7 @@ class BRow extends StatelessWidget {
   }) {
     final style = convertClassNamesToStyle(classNames);
     return BRow._(
-      style: style as Style,
+      style: style,
       children: children,
     );
   }
@@ -24,7 +24,7 @@ class BRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final rowCols = style?.rowCols;
-    
+
     return MediaQueryBuilder(builder: (context, constraints, screenData) {
       var s = getStyle(screenData, constraints, style);
       if (s.isVisible == false) return const SizedBox.shrink();
@@ -76,6 +76,7 @@ class BRow extends StatelessWidget {
                 alignment: ha ?? WrapAlignment.start,
                 crossAxisAlignment: va ?? WrapCrossAlignment.start,
                 spacing: co ?? 0.0,
+                clipBehavior: Clip.none,
                 children: [
                   ...sortedChildren.map(
                     (e) => e._wrapChild(

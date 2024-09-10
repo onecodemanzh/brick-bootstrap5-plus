@@ -5,8 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/material.dart' as m;
 import 'dart:ui' as ui show TextHeightBehavior;
 import 'package:collection/collection.dart';
+import 'package:flutter/widgets.dart';
 import 'package:intersperse/intersperse.dart';
+import 'package:get/get.dart';
 
+// import 'dart:developer' as d;
 
 part 'layout/col.dart';
 part 'layout/order.dart';
@@ -14,6 +17,7 @@ part 'layout/grid.dart';
 part 'layout/div.dart';
 part 'layout/container.dart';
 part 'layout/row.dart';
+part 'layout/h5Row.dart';
 part 'layout/keepAlive.dart';
 part 'typography/display1.dart';
 part 'typography/display2.dart';
