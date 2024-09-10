@@ -9,11 +9,8 @@ import 'package:flutter/widgets.dart';
 import 'package:intersperse/intersperse.dart';
 import 'package:get/get.dart';
 
-<<<<<<< HEAD
 // import 'dart:developer' as d;
 
-=======
->>>>>>> 704a2f62e771a1627802e941ee2e17e8d7470150
 part 'layout/col.dart';
 part 'layout/order.dart';
 part 'layout/grid.dart';
