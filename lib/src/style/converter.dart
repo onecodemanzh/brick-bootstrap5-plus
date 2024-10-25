@@ -183,6 +183,7 @@ Style? convertClassNamesToStyle(String? classNames) {
           var alignment = style.alignment ?? _Alignment();
           var newAlignment = alignment._copyWithClass(className);
           style = style.copyWith(alignment: newAlignment);
+<<<<<<< HEAD
         } else if (className.contains('activeColor-')) {
           var color = style.color ?? _Color();
           var newColor = color._copyWithClass(className);
@@ -226,6 +227,51 @@ Style? convertClassNamesToStyle(String? classNames) {
         }
         break;
 
+=======
+        } else if (className.contains('activeColor')) {
+          var color = style.color ?? _Color();
+          var newColor = color._copyWithClass(className);
+          style = style.copyWith(activeColor: newColor);
+        }
+        break;
+
+      case 'b':
+        if (className.contains('bg')) {
+          var color = style.bgColor ?? _Color();
+          var newColor = color._copyWithClass(className);
+          style = style.copyWith(bgColor: newColor);
+        } else if (className.contains('border-color')) {
+          var color = style.borderColor ?? _BorderColor();
+          var newColor = color._copyWithClass(className);
+          style = style.copyWith(borderColor: newColor);
+        } else if (className.contains('border-radius')) {
+          var radius = style.borderRadius ?? _BorderRadius();
+          var newRadius = radius._copyWithClass(className);
+          style = style.copyWith(borderRadius: newRadius);
+        } else if (className.contains('border-')) {
+          var border = style.border ?? _Border();
+          var newBorder = border._copyWithClass(className);
+          style = style.copyWith(border: newBorder);
+        } else if (className.contains('blur-')) {
+          var blur = style.blur ?? _Blur();
+          var newBlur = blur._copyWithClass(className);
+          style = style.copyWith(blur: newBlur);
+        }
+        break;
+
+      case 'c':
+        if (className.contains('color')) {
+          var color = style.color ?? _Color();
+          var newColor = color._copyWithClass(className);
+          style = style.copyWith(color: newColor);
+        } else {
+          var size = style.size ?? _Size();
+          final newSize = size._copyWithClass(className);
+          style = style.copyWith(size: newSize);
+        }
+        break;
+
+>>>>>>> d706993dac5e3c9097520ca74cc84f478a7e93ce
       case 'd':
         var display = style.display ?? _Display();
         final newDisplay = display._copyWithClass(className);
@@ -233,19 +279,31 @@ Style? convertClassNamesToStyle(String? classNames) {
         break;
 
       case 'f':
+<<<<<<< HEAD
         if (className.contains('font-weight-')) {
+=======
+        if (className.contains('font-weight')) {
+>>>>>>> d706993dac5e3c9097520ca74cc84f478a7e93ce
           var fontWeight = style.fontWeight ?? _FontWeight();
           var newFontWeight = fontWeight._copyWithClass(className);
           style = style.copyWith(fontWeight: newFontWeight);
         }
 
+<<<<<<< HEAD
         if (className.contains('font-size-')) {
+=======
+        if (className.contains('font-size')) {
+>>>>>>> d706993dac5e3c9097520ca74cc84f478a7e93ce
           var fontSize = style.fontSize ?? _FontSize();
           var newFontSize = fontSize._copyWithClass(className);
           style = style.copyWith(fontSize: newFontSize);
         }
 
+<<<<<<< HEAD
         if (className.contains('fit-')) {
+=======
+        if (className.contains('fit')) {
+>>>>>>> d706993dac5e3c9097520ca74cc84f478a7e93ce
           var fit = style.fit ?? _Fit();
           var newFit = fit._copyWithClass(className);
           style = style.copyWith(fit: newFit);
@@ -259,6 +317,7 @@ Style? convertClassNamesToStyle(String? classNames) {
         break;
 
       case 'h':
+<<<<<<< HEAD
         if (className.contains('hoverColor-')) {
           var color = style.color ?? _Color();
           var newColor = color._copyWithClass(className);
@@ -268,6 +327,17 @@ Style? convertClassNamesToStyle(String? classNames) {
           var newColor = color._copyWithClass(className);
           style = style.copyWith(hoverBorderColor: newColor);
         } else if (className.contains('hoverBorder-')) {
+=======
+        if (className.contains('hoverColor')) {
+          var color = style.color ?? _Color();
+          var newColor = color._copyWithClass(className);
+          style = style.copyWith(hoverColor: newColor);
+        } else if (className.contains('hoverBorderColor')) {
+          var color = style.color ?? _Color();
+          var newColor = color._copyWithClass(className);
+          style = style.copyWith(hoverBorderColor: newColor);
+        } else if (className.contains('hoverBorder')) {
+>>>>>>> d706993dac5e3c9097520ca74cc84f478a7e93ce
           var hoverBorder = style.hoverBorder ?? _Border();
           var newHoverBorder = hoverBorder._copyWithClass(className);
           style = style.copyWith(hoverBorder: newHoverBorder);
@@ -280,7 +350,11 @@ Style? convertClassNamesToStyle(String? classNames) {
         break;
 
       case 'j':
+<<<<<<< HEAD
         if (className.contains('justify-content-')) {
+=======
+        if (className.contains('justify-content')) {
+>>>>>>> d706993dac5e3c9097520ca74cc84f478a7e93ce
           var horizontalAlignment =
               style.horizontalAlignment ?? _HorizontalAlignment();
           var newHorizontalAlignment =
@@ -290,6 +364,7 @@ Style? convertClassNamesToStyle(String? classNames) {
         break;
 
       case 'm':
+<<<<<<< HEAD
         if (className.contains('maxHeight-')) {
           var height = style.maxHeight ?? _Height();
           final newHeight = height._copyWithClass(className);
@@ -303,6 +378,21 @@ Style? convertClassNamesToStyle(String? classNames) {
           final newHeight = height._copyWithClass(className);
           style = style.copyWith(minWidth: newHeight);
         } else if (className.contains('maxWidth-')) {
+=======
+        if (className.contains('maxHeight')) {
+          var height = style.maxHeight ?? _Height();
+          final newHeight = height._copyWithClass(className);
+          style = style.copyWith(maxHeight: newHeight);
+        } else if (className.contains('minHeight')) {
+          var height = style.minHeight ?? _Height();
+          final newHeight = height._copyWithClass(className);
+          style = style.copyWith(minHeight: newHeight);
+        } else if (className.contains('minWidth')) {
+          var height = style.minWidth ?? _Width();
+          final newHeight = height._copyWithClass(className);
+          style = style.copyWith(minWidth: newHeight);
+        } else if (className.contains('maxWidth')) {
+>>>>>>> d706993dac5e3c9097520ca74cc84f478a7e93ce
           var height = style.maxWidth ?? _Width();
           final newHeight = height._copyWithClass(className);
           style = style.copyWith(maxWidth: newHeight);
@@ -321,6 +411,10 @@ Style? convertClassNamesToStyle(String? classNames) {
           style = style.copyWith(offset: newOffset);
           break;
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> d706993dac5e3c9097520ca74cc84f478a7e93ce
         if (prefix == 'order') {
           var order = style.order ?? _Order();
           final newOrder = order._copyWithClass(className);
@@ -336,11 +430,17 @@ Style? convertClassNamesToStyle(String? classNames) {
         break;
 
       case 'r':
+<<<<<<< HEAD
         if (prefix == 'row') {
           var rowCols = style.rowCols ?? _RowCols();
           final newRowCols = rowCols._copyWithClass(className);
           style = style.copyWith(rowCols: newRowCols);
         }
+=======
+        var rowCols = style.rowCols ?? _RowCols();
+        final newRowCols = rowCols._copyWithClass(className);
+        style = style.copyWith(rowCols: newRowCols);
+>>>>>>> d706993dac5e3c9097520ca74cc84f478a7e93ce
         break;
 
       case 's':
@@ -349,22 +449,38 @@ Style? convertClassNamesToStyle(String? classNames) {
           var newFit = fit._copyWithClass(className);
           style = style.copyWith(stackFit: newFit);
         }
+<<<<<<< HEAD
         if (className.contains('scale-')) {
+=======
+        if (className.contains('scale')) {
+>>>>>>> d706993dac5e3c9097520ca74cc84f478a7e93ce
           var scale = style.scale ?? _Scale();
           var newScale = scale._copyWithClass(className);
           style = style.copyWith(scale: newScale);
         }
+<<<<<<< HEAD
         if (className.contains('shadow-color-')) {
+=======
+        if (className.contains('shadow-color')) {
+>>>>>>> d706993dac5e3c9097520ca74cc84f478a7e93ce
           var color = style.shadowColor ?? _ShadowColor();
           var newColor = color._copyWithClass(className);
           style = style.copyWith(shadowColor: newColor);
         }
+<<<<<<< HEAD
         if (className.contains('shadow-blurRadius-')) {
+=======
+        if (className.contains('shadow-blurRadius')) {
+>>>>>>> d706993dac5e3c9097520ca74cc84f478a7e93ce
           var blurRadius = style.shadowBlurRadius ?? _ShadowBlurRadius();
           var newblurRadius = blurRadius._copyWithClass(className);
           style = style.copyWith(shadowBlurRadius: newblurRadius);
         }
+<<<<<<< HEAD
         if (className.contains('shadow-offset-')) {
+=======
+        if (className.contains('shadow-offset')) {
+>>>>>>> d706993dac5e3c9097520ca74cc84f478a7e93ce
           var offset = style.shadowOffset ?? _ShadowOffset();
           var newoffset = offset._copyWithClass(className);
           style = style.copyWith(shadowOffset: newoffset);

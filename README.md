@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <h1 align="center">
      <p align="center"><a href="https://pub.dev/packages/brick_bootstrap5_plus">brick_bootstrap5_plus 🚀 </a> <a href="https://github.com/onecodemanzh/brick-bootstrap5-plus">github</a> </p>
 </h1>
@@ -13,14 +14,23 @@
 <br />
 <br />
 
+=======
+>>>>>>> d706993dac5e3c9097520ca74cc84f478a7e93ce
 
 
 
 
+<<<<<<< HEAD
 #### BreakPoints
 
 要设置自己的断点(breakPoints)，您可以简单地将BreakPoints类传递给[FlutterBootstrap5]小部件。
 默认情况下，使用Bootstrap5 CSS的当前断点(breakPoints)
+=======
+
+
+## Usage
+
+>>>>>>> d706993dac5e3c9097520ca74cc84f478a7e93ce
 
 ```dart
         class BootstrapBreakPoints {
@@ -36,6 +46,7 @@
 
 #### Container BreakPoints
 
+<<<<<<< HEAD
 除了正常的断点(breakPoints)，你也可以为[FB5Container]定义你自己的断点(breakPoints)。
 这些决定了[FB5Container]在某个断点(breakPoints)处应该具有的宽度。
 
@@ -274,3 +285,5 @@ BCol 根据 classNames 进行排列和显示。
     // 如果您需要为不同的断点(breakPoints)设置不同的值
     final width = responsiveValue<double>(context, defaultValue: 300.0, md: 350.0, xl: 400.0);
 ```
+=======
+>>>>>>> d706993dac5e3c9097520ca74cc84f478a7e93ce

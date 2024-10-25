@@ -1,5 +1,6 @@
 part of brick_bootstrap5_plus_widgets;
 
+<<<<<<< HEAD
 class H5Row extends StatefulWidget {
   final List<Widget> children;
   final String classNames;
@@ -21,6 +22,12 @@ class H5Row extends StatefulWidget {
   ///     children:[],
   ///   )
   /// ```
+=======
+
+class H5Row extends StatefulWidget {
+  final List<Widget> children;
+  final String classNames;
+>>>>>>> d706993dac5e3c9097520ca74cc84f478a7e93ce
   H5Row({
     super.key,
     required this.children,
@@ -44,6 +51,7 @@ class _H5RowState extends State<H5Row> {
     return MediaQueryBuilder(builder: (context, constraints, screenData) {
       final styles = convertClassNamesToStyle(widget.classNames);
       final s = getStyle(screenData, constraints, styles);
+<<<<<<< HEAD
 
       final minWidth = (s.minWidth != null && s.w != null)
           ? ((s.minWidth! > s.w!) ? s.minWidth! : s.w!)
@@ -63,6 +71,14 @@ class _H5RowState extends State<H5Row> {
           minHeight: minHeight > maxHeight ? maxHeight : minHeight,
           maxWidth: maxWidth,
           maxHeight: maxHeight,
+=======
+      return ConstrainedBox(
+        constraints: BoxConstraints(
+          minWidth: s.maxWidth ?? constraints.maxWidth,
+          minHeight: s.minHeight ?? constraints.minHeight,
+          maxWidth: s.maxWidth ?? constraints.maxWidth,
+          maxHeight: s.maxHeight ?? Get.height,
+>>>>>>> d706993dac5e3c9097520ca74cc84f478a7e93ce
         ),
         child: Padding(
           padding: s.cm ?? EdgeInsets.all(0),
