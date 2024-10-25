@@ -173,13 +173,8 @@ class BCol extends _OrderWidget {
         child: Wrap(
           crossAxisAlignment: s.va ?? WrapCrossAlignment.start,
           alignment: s.ha ??
-<<<<<<< HEAD
               (alignment != null
                   ? alignment2WrapAlignment(alignment) ?? WrapAlignment.start
-=======
-              (s.sa != null
-                  ? _convertWrapAlignment(s.sa!)
->>>>>>> d706993dac5e3c9097520ca74cc84f478a7e93ce
                   : WrapAlignment.start),
           children:
               children.isNotEmpty ? children : [child ?? SizedBox.shrink()],

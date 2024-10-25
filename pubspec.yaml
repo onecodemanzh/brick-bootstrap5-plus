@@ -1,11 +1,6 @@
 name: brick_bootstrap5_plus
-<<<<<<< HEAD
 description: A Flutter UI Dart libraries with the bootstrap5.
 version: 1.0.0
-=======
-description: A Flutter UI Dart libraries .
-version: 0.0.4
->>>>>>> d706993dac5e3c9097520ca74cc84f478a7e93ce
 repository: https://github.com/onecodemanzh/brick-bootstrap5-plus
 
 environment:
@@ -16,11 +11,7 @@ dependencies:
   collection: ^1.18.0
   flutter:
     sdk: flutter
-<<<<<<< HEAD
   get: ^5.0.0-release-candidate-9.2.1
-=======
-  get: ^5.0.0-release-candidate-6
->>>>>>> d706993dac5e3c9097520ca74cc84f478a7e93ce
   intersperse: ^2.0.0
   intl: ^0.19.0
   tinycolor2: ^3.0.1

@@ -164,11 +164,6 @@ StyleAbbrSet getStyle(
   final _minWidth = styles?.minWidth;
   final _minHeight = styles?.minHeight;
 
-  final _maxWidth = styles?.maxWidth;
-  final _maxHeight = styles?.maxHeight;
-  final _minWidth = styles?.minWidth;
-  final _minHeight = styles?.minHeight;
-
   final border = styles?.border;
   final borderColor = styles?.borderColor;
   final hoverColor = styles?.hoverColor;
@@ -605,7 +600,6 @@ StyleAbbrSet getStyle(
     xl: shadowBlurRadius?.xl,
     xxl: shadowBlurRadius?.xxl,
   );
-<<<<<<< HEAD
   final currentOrder = screenData.breakPoints.currentOrder(
     constraints.maxWidth,
     screenData.currentBreakPoint,
@@ -617,9 +611,6 @@ StyleAbbrSet getStyle(
     xl: order?.xl,
     xxl: order?.xxl,
   );
-=======
-
->>>>>>> d706993dac5e3c9097520ca74cc84f478a7e93ce
   // final shadowOffset = styles?.shadowOffset;
 
   final shadowOffset0 = screenData.breakPoints._shadowOffset(
@@ -812,12 +803,9 @@ class StyleAbbrSet {
 
   //阴影偏移量
   Offset? shadowOffset;
-<<<<<<< HEAD
   
   // BCol 排序
   double? order;
-=======
->>>>>>> d706993dac5e3c9097520ca74cc84f478a7e93ce
 
   StyleAbbrSet({
     this.order,

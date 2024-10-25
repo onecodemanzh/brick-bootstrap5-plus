@@ -100,17 +100,11 @@ class Grid extends StatelessWidget {
 
                       final child = Row(
                         mainAxisAlignment:
-<<<<<<< HEAD
                             wrapAlignment2MainAxisAlignment(ha) ??
                                 MainAxisAlignment.start,
                         crossAxisAlignment:
                             wrapCrossAlignment2CrossAxisAlignment(va) ??
                                 CrossAxisAlignment.start,
-=======
-                            _convertAlignment(ha) ?? MainAxisAlignment.start,
-                        crossAxisAlignment: _convertCrossAlignment(va) ??
-                            CrossAxisAlignment.stretch,
->>>>>>> d706993dac5e3c9097520ca74cc84f478a7e93ce
                         children: [
                           ...slice
                               .map<Widget>(
