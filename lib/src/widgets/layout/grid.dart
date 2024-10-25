@@ -10,6 +10,7 @@ class Grid extends StatelessWidget {
     required this.children,
   }) : super(key: key);
 
+  @Deprecated('不建议使用, 建议使用 Flutter GridView')
   factory Grid({
     String? classNames,
     bool sortChildren = false,
@@ -17,7 +18,7 @@ class Grid extends StatelessWidget {
   }) {
     final style = convertClassNamesToStyle(classNames);
     return Grid._(
-      style: style as Style,
+      style: style,
       sortChildren: sortChildren,
       children: children,
     );
@@ -31,7 +32,7 @@ class Grid extends StatelessWidget {
   }) {
     final style = convertClassNamesToStyle(classNames);
     return Grid._(
-      style: style as Style,
+      style: style,
       intrinsicHeight: false,
       maxChildExpand: maxChildExpand,
       sortChildren: sortChildren,
@@ -45,38 +46,6 @@ class Grid extends StatelessWidget {
   final double? maxChildExpand;
   final List<Widget> children;
   final bool sortChildren;
-
-  MainAxisAlignment? _convertAlignment(WrapAlignment? alignment) {
-    switch (alignment) {
-      case WrapAlignment.start:
-        return MainAxisAlignment.start;
-      case WrapAlignment.end:
-        return MainAxisAlignment.end;
-      case WrapAlignment.center:
-        return MainAxisAlignment.center;
-      case WrapAlignment.spaceBetween:
-        return MainAxisAlignment.spaceBetween;
-      case WrapAlignment.spaceAround:
-        return MainAxisAlignment.spaceAround;
-      case WrapAlignment.spaceEvenly:
-        return MainAxisAlignment.spaceEvenly;
-      default:
-        return null;
-    }
-  }
-
-  CrossAxisAlignment? _convertCrossAlignment(WrapCrossAlignment? alignment) {
-    switch (alignment) {
-      case WrapCrossAlignment.start:
-        return CrossAxisAlignment.start;
-      case WrapCrossAlignment.end:
-        return CrossAxisAlignment.end;
-      case WrapCrossAlignment.center:
-        return CrossAxisAlignment.center;
-      default:
-        return null;
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -130,8 +99,12 @@ class Grid extends StatelessWidget {
                           (constraints.maxWidth - (hp * (rc - 1))) / rc;
 
                       final child = Row(
-                        mainAxisAlignment: _convertAlignment(ha) ?? MainAxisAlignment.start,
-                        crossAxisAlignment: _convertCrossAlignment(va) ?? CrossAxisAlignment.stretch,
+                        mainAxisAlignment:
+                            wrapAlignment2MainAxisAlignment(ha) ??
+                                MainAxisAlignment.start,
+                        crossAxisAlignment:
+                            wrapCrossAlignment2CrossAxisAlignment(va) ??
+                                CrossAxisAlignment.start,
                         children: [
                           ...slice
                               .map<Widget>(

@@ -1,4 +1,5 @@
 part of brick_bootstrap5_plus_style;
+
 class _SelfAlignment {
   final Alignment? defaultAlignment;
   final Alignment? xs;
@@ -59,6 +60,22 @@ class _SelfAlignment {
         return Alignment.center;
       case 'end':
         return Alignment.bottomRight;
+      case 'bottomCenter':
+        return Alignment.bottomCenter;
+      case 'bottomLeft':
+        return Alignment.bottomLeft;
+      case 'bottomRight':
+        return Alignment.bottomRight;
+      case 'centerLeft':
+        return Alignment.centerLeft;
+      case 'centerRight':
+        return Alignment.centerRight;
+      case 'topCenter':
+        return Alignment.topCenter;
+      case 'topLeft':
+        return Alignment.topLeft;
+      case 'topRight':
+        return Alignment.topRight;
     }
     return null;
   }

@@ -54,14 +54,18 @@ class _Alignment {
 
   Alignment? _fromString(String alignment) {
     switch (alignment) {
+      case 'start':
+        return Alignment.topLeft;
+      case 'center':
+        return Alignment.center;
+      case 'end':
+        return Alignment.bottomRight;
       case 'bottomCenter':
         return Alignment.bottomCenter;
       case 'bottomLeft':
         return Alignment.bottomLeft;
       case 'bottomRight':
         return Alignment.bottomRight;
-      case 'center':
-        return Alignment.center;
       case 'centerLeft':
         return Alignment.centerLeft;
       case 'centerRight':

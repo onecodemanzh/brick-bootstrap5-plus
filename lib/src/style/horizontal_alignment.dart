@@ -1,4 +1,5 @@
 part of brick_bootstrap5_plus_style;
+
 class _HorizontalAlignment {
   final WrapAlignment? defaultAlignment;
   final WrapAlignment? xs;

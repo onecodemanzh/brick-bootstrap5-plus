@@ -1,7 +1,6 @@
-
-import 'package:brick_bootstrap5_plus/src/style/style.dart';
 import 'package:flutter/material.dart';
 
+import '../brick_bootstrap5_plus.dart';
 import 'layout/layout.dart';
 
 class BootstrapTypography {
@@ -148,7 +147,8 @@ class TextSetting {
 
   /// based on 16px default font size
   factory TextSetting.fromFontSize(double fontSize,
-      {TextStyle style = const TextStyle(), double defaultFontSize = ScreenData.defaultFontSize}) {
+      {TextStyle style = const TextStyle(),
+      double defaultFontSize = ScreenData.defaultFontSize}) {
     final fontSizeMultiplier = fontSize / defaultFontSize;
     double? fontSizeMultiplierSmall;
     double? viewPortMultiplier;

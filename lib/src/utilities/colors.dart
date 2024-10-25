@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_initializing_formals
+
 part of brick_bootstrap5_plus_utilities;
 
 class BootstrapColors {
@@ -25,38 +27,89 @@ class BootstrapColors {
   static const Color gray90075 = Color(0xBF212529);
   static const Color black50 = Color(0x80000000);
   static const Color white50 = Color(0x80FFFFFF);
+
+  /// 未选中时 前景色
+  static const Color fg = Color(0xFF000000);
+
+  /// 未选中时 背景色
+  static const Color bg = Color(0xFFFFFFFF);
+
+  /// 选中时 前景色
+  static const Color select = Color(0xFF8DB0FF);
+
+  /// 选中时 背景色
+  static const Color selectBg = Color(0xFFE8EFFF);
 }
 
 class BColors {
-  final Color primary;
-  final Color secondary;
-  final Color success;
-  final Color danger;
-  final Color warning;
-  final Color info;
-  final Color light;
-  final Color dark;
-  final Color body;
-  final Color muted;
-  final Color white;
-  final Color black50;
-  final Color white50;
+  const BColors();
 
-  const BColors({
-    this.primary = BootstrapColors.blue,
-    this.secondary = BootstrapColors.gray600,
-    this.success = BootstrapColors.success,
-    this.danger = BootstrapColors.red,
-    this.warning = BootstrapColors.yellow,
-    this.info = BootstrapColors.cyan,
-    this.light = BootstrapColors.gray100,
-    this.dark = BootstrapColors.gray900,
-    this.body = BootstrapColors.gray900,
-    this.muted = BootstrapColors.gray90075,
-    this.white = BootstrapColors.white,
-    this.black50 = BootstrapColors.black50,
-    this.white50 = BootstrapColors.white50,
-  });
+  static Color primary = BootstrapColors.blue;
+  static Color secondary = BootstrapColors.gray600;
+  static Color thirdly = const Color(0xFFE0E0E0);
+  static Color success = BootstrapColors.success;
+  static Color danger = BootstrapColors.red;
+  static Color warning = BootstrapColors.yellow;
+  static Color info = BootstrapColors.cyan;
+  static Color light = BootstrapColors.gray100;
+  static Color dark = BootstrapColors.gray900;
+  static Color body = BootstrapColors.gray900;
+  static Color muted = BootstrapColors.gray90075;
+  static Color white = BootstrapColors.white;
+  static Color black50 = BootstrapColors.black50;
+  static Color white50 = BootstrapColors.white50;
+
+  /// 未选中时 前景色
+  static Color fg = BootstrapColors.fg;
+
+  /// 未选中时 背景色
+  static Color bg = BootstrapColors.bg;
+
+  /// 选中时 前景色
+  static Color select = BootstrapColors.select;
+
+  /// 选中时 背景色
+  static Color selectBg = BootstrapColors.selectBg;
+
+  BColors.copyWith({
+    Color primary = BootstrapColors.blue,
+    Color secondary = BootstrapColors.gray600,
+    Color thirdly = const Color(0xFFE0E0E0),
+    Color success = BootstrapColors.success,
+    Color danger = BootstrapColors.red,
+    Color warning = BootstrapColors.yellow,
+    Color info = BootstrapColors.cyan,
+    Color light = BootstrapColors.gray100,
+    Color dark = BootstrapColors.gray900,
+    Color body = BootstrapColors.gray900,
+    Color muted = BootstrapColors.gray90075,
+    Color white = BootstrapColors.white,
+    Color black50 = BootstrapColors.black50,
+    Color white50 = BootstrapColors.white50,
+    Color fg = BootstrapColors.fg,
+    Color bg = BootstrapColors.bg,
+    Color select = BootstrapColors.select,
+    Color selectBg = BootstrapColors.selectBg,
+  }) {
+    BColors.primary = primary;
+    BColors.secondary = secondary;
+    BColors.thirdly = thirdly;
+    BColors.success = success;
+    BColors.danger = danger;
+    BColors.warning = warning;
+    BColors.info = info;
+    BColors.light = light;
+    BColors.dark = dark;
+    BColors.body = body;
+    BColors.muted = muted;
+    BColors.white = white;
+    BColors.black50 = black50;
+    BColors.white50 = white50;
+    BColors.fg = fg.withOpacity(.87);
+    BColors.bg = bg;
+    BColors.select = select;
+    BColors.selectBg = selectBg;
+  }
 }
 
 Color lighten(Color? c, {int amount = 10}) =>

@@ -18,6 +18,7 @@ class _Width {
     this.lg,
     this.xl,
     this.xxl,
+    this.unit,
   });
 
   _Width _copyWith({
@@ -37,6 +38,7 @@ class _Width {
       lg: lg ?? this.lg,
       xl: xl ?? this.xl,
       xxl: xxl ?? this.xxl,
+      unit: unit,
     );
   }
 

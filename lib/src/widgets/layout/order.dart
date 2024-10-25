@@ -8,7 +8,6 @@ abstract class _OrderWidget extends StatelessWidget {
   double _order(BoxConstraints constraints, ScreenData screenData,
       BreakPoint currentBreakPoint) {
     final order = style?.order;
-
     return screenData.breakPoints.currentOrder(
       constraints.maxWidth,
       currentBreakPoint,

@@ -1,4 +1,5 @@
 part of brick_bootstrap5_plus_style;
+
 class _Color {
   final Color? defaultColor;
   final Color? xs;
@@ -284,13 +285,71 @@ class _Color {
       case 'blueGrey':
         color = Colors.blueGrey;
         break;
+
+      case 'primary':
+        color = BColors.primary;
+        break;
+      case 'secondary':
+        color = BColors.secondary;
+        break;
+      case 'thirdly':
+        color = BColors.thirdly;
+        break;
+      case 'success':
+        color = BColors.success;
+        break;
+      case 'danger':
+        color = BColors.danger;
+        break;
+      case 'warning':
+        color = BColors.warning;
+        break;
+      case 'info':
+        color = BColors.info;
+        break;
+      case 'light':
+        color = BColors.light;
+        break;
+      case 'dark':
+        color = BColors.dark;
+        break;
+      case 'body':
+        color = BColors.body;
+        break;
+      case 'muted':
+        color = BColors.muted;
+        break;
+      // case 'white': color = BColors.white; break;
+      case 'black50':
+        color = BColors.black50;
+        break;
+      case 'white50':
+        color = BColors.white50;
+        break;
+      case 'fg':
+        color = BColors.fg;
+        break;
+      case 'bg':
+        color = BColors.bg;
+        break;
+      case 'select':
+        color = BColors.select;
+        break;
+      case 'selectBg':
+        color = BColors.selectBg;
+        break;
+
       default:
         if (r != null && g != null && b != null) {
           color = Color.fromRGBO(r, g, b, a ?? 1);
         } else {
-          /// #fff #ffffff
-          if (type.length == 3 || type.length == 6) {
-            color = TinyColor.fromString('0xFF$type').toColor();
+          /// #fff #ffffff #FFDFE2E6 0xFFDFE2E6
+          // if (type.length == 3 || type.length == 6) {
+          if (type.length >= 3) {
+            final reg = RegExp('0xFF', caseSensitive: false);
+            color = TinyColor.fromString(
+                    reg.hasMatch(type) ? type.replaceFirst(reg, '') : type)
+                .toColor();
           }
         }
         break;

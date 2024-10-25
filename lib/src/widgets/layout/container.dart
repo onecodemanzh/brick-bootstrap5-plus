@@ -2,6 +2,7 @@ part of brick_bootstrap5_plus_widgets;
 
 enum _ContainerBreakPoint { sm, md, lg, xl, xxl, fluid }
 
+@Deprecated('不建议使用, 建议使用 H5Row')
 class BContainer extends StatelessWidget {
   const BContainer._({
     Key? key,

@@ -38,7 +38,7 @@ EdgeInsets? padding(BuildContext context, String classNames) {
   final screenData = BootstrapTheme.of(context);
   final classList = classNames.trim().split(" ");
 
-  var padding = lib.Padding();
+  var padding = lib.PaddingStyle();
   for (final className in classList) {
     final prefix = className.trim().split("-").first;
 
@@ -48,7 +48,7 @@ EdgeInsets? padding(BuildContext context, String classNames) {
     // e.g p, pt, pb, etc.
     switch (prefix.substring(0, 1)) {
       case 'p':
-        final newPadding = padding.copyWithClass(className) as lib.Padding;
+        final newPadding = padding.copyWithClass(className) as lib.PaddingStyle;
         padding = newPadding;
         break;
     }

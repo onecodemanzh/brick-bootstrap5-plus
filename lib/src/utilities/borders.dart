@@ -12,9 +12,7 @@ Border borderPrimary(
 }) {
   final theme = BootstrapTheme.of(context);
   final borderSide = BorderSide(
-      width: width,
-      color: theme.colors.primary.withOpacity(opacity),
-      style: style);
+      width: width, color: BColors.primary.withOpacity(opacity), style: style);
   return Border(
     top: top ?? borderSide,
     left: left ?? borderSide,
@@ -36,7 +34,7 @@ Border borderSecondary(
   final theme = BootstrapTheme.of(context);
   final borderSide = BorderSide(
       width: width,
-      color: theme.colors.secondary.withOpacity(opacity),
+      color: BColors.secondary.withOpacity(opacity),
       style: style);
   return Border(
     top: top ?? borderSide,
@@ -58,9 +56,7 @@ Border borderSuccess(
 }) {
   final theme = BootstrapTheme.of(context);
   final borderSide = BorderSide(
-      width: width,
-      color: theme.colors.success.withOpacity(opacity),
-      style: style);
+      width: width, color: BColors.success.withOpacity(opacity), style: style);
   return Border(
     top: top ?? borderSide,
     left: left ?? borderSide,
@@ -81,9 +77,7 @@ Border borderDanger(
 }) {
   final theme = BootstrapTheme.of(context);
   final borderSide = BorderSide(
-      width: width,
-      color: theme.colors.danger.withOpacity(opacity),
-      style: style);
+      width: width, color: BColors.danger.withOpacity(opacity), style: style);
   return Border(
     top: top ?? borderSide,
     left: left ?? borderSide,
@@ -104,9 +98,7 @@ Border borderWarning(
 }) {
   final theme = BootstrapTheme.of(context);
   final borderSide = BorderSide(
-      width: width,
-      color: theme.colors.warning.withOpacity(opacity),
-      style: style);
+      width: width, color: BColors.warning.withOpacity(opacity), style: style);
   return Border(
     top: top ?? borderSide,
     left: left ?? borderSide,
@@ -127,9 +119,7 @@ Border borderInfo(
 }) {
   final theme = BootstrapTheme.of(context);
   final borderSide = BorderSide(
-      width: width,
-      color: theme.colors.info.withOpacity(opacity),
-      style: style);
+      width: width, color: BColors.info.withOpacity(opacity), style: style);
   return Border(
     top: top ?? borderSide,
     left: left ?? borderSide,
@@ -150,9 +140,7 @@ Border borderLight(
 }) {
   final theme = BootstrapTheme.of(context);
   final borderSide = BorderSide(
-      width: width,
-      color: theme.colors.light.withOpacity(opacity),
-      style: style);
+      width: width, color: BColors.light.withOpacity(opacity), style: style);
   return Border(
     top: top ?? borderSide,
     left: left ?? borderSide,
@@ -173,9 +161,7 @@ Border borderDark(
 }) {
   final theme = BootstrapTheme.of(context);
   final borderSide = BorderSide(
-      width: width,
-      color: theme.colors.dark.withOpacity(opacity),
-      style: style);
+      width: width, color: BColors.dark.withOpacity(opacity), style: style);
   return Border(
     top: top ?? borderSide,
     left: left ?? borderSide,
@@ -196,9 +182,7 @@ Border borderWhite(
 }) {
   final theme = BootstrapTheme.of(context);
   final borderSide = BorderSide(
-      width: width,
-      color: theme.colors.white.withOpacity(opacity),
-      style: style);
+      width: width, color: BColors.white.withOpacity(opacity), style: style);
   return Border(
     top: top ?? borderSide,
     left: left ?? borderSide,
@@ -241,7 +225,8 @@ BorderRadius roundedPill(BuildContext context) {
   return BorderRadius.all(Radius.circular(theme.fontSize * 50));
 }
 
-BoxDecoration? getBoxDecorationByStyle(StyleAbbrSet s) {
+/// 废弃
+BoxDecoration? getBoxDecorationByStyle1(StyleAbbrSet s) {
   if (s.border != null && s.borderColor != null && s.borderRadius != null) {
     return BoxDecoration(
       border: Border.all(
@@ -295,4 +280,42 @@ BoxDecoration? getBoxDecorationByStyle(StyleAbbrSet s) {
     );
   }
   return null;
+}
+
+BoxDecoration? getBoxDecorationByStyle(StyleAbbrSet s, [RxBool? isHover]) {
+  Color? color = isHover?.value == true ? s.hoverColor ?? s.bg : s.bg;
+  Color borderColor = isHover?.value == true
+      ? (s.hoverBorderColor ?? s.borderColor ?? Colors.transparent)
+      : (s.borderColor ?? Colors.transparent);
+  // DecorationImage? image;
+  BoxBorder? border = Border.all(
+    width: s.border ?? 0,
+    color: borderColor,
+  );
+  BorderRadius? borderRadius =
+      BorderRadius.all(Radius.circular(s.borderRadius ?? 0));
+
+  List<BoxShadow>? boxShadow = [
+    BoxShadow(
+      color: s.shadowColor ?? Colors.transparent,
+      offset: s.shadowOffset ?? Offset.zero,
+      blurRadius: s.shadowBlurRadius ?? 0.0,
+    )
+  ];
+
+  // Gradient? gradient;
+  // BlendMode? backgroundBlendMode;
+  // BoxShape? shape;
+
+  var box = BoxDecoration(
+    color: color,
+    // image: image,
+    border: border,
+    borderRadius: borderRadius,
+    boxShadow: boxShadow,
+    // gradient: gradient,
+    // backgroundBlendMode: backgroundBlendMode,
+    // shape: shape,
+  );
+  return box;
 }
